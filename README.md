@@ -17,7 +17,7 @@ This project contains a WordPress development environment using Docker Compose w
 ### 1. Clone this Repository
 
 ```bash
-git clone https://github.com/your-username/learnmate.git
+git clone https://github.com/deepeshJCU/learnmate-child-docker.git
 cd learnmate
 ```
 
