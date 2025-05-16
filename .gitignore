@@ -1,0 +1,21 @@
+# Docker
+*.log
+docker-compose.override.yml
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+
+# OS/System
+.DS_Store
+Thumbs.db
+
+# Node / Composer / Others
+node_modules/
+vendor/
+
+# PHPStorm or VSCode settings
+.idea/
+.vscode/
