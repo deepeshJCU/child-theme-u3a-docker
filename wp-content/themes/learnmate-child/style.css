@@ -1,0 +1,43 @@
+/*
+Theme Name: LearnMate Child
+Theme URI: http://localhost:8000/
+Description: A child theme for LearnMate.
+Author: Deepesh Bijarnia
+Author URI: https://learnmate-egggbj.flywp.xyz/
+Template: astra
+Version: 1.0.0
+*/
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  body.dark-mode a {
+    color: #90cdf4;
+  }
+  
+  body.dark-mode header,
+  body.dark-mode footer,
+  body.dark-mode .site-header,
+  body.dark-mode .site-footer {
+    background-color: #1e1e1e;
+  }
+  
+  body.dark-mode .site,
+  body.dark-mode .entry-content,
+  body.dark-mode .widget {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+  
+  body.dark-mode button,
+  body.dark-mode input,
+  body.dark-mode select,
+  body.dark-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+  }
+  
