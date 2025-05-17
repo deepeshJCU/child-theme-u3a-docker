@@ -23,4 +23,5 @@ jobs:
           user: ${{ secrets.FLYWP_SFTP_USER }}
           pass: ${{ secrets.FLYWP_SFTP_PASS }}
           localDir: wp-content/themes/learnmate-child
-          remoteDir: /public/wp-content/themes/learnmate-child
+          remoteDir: /var/www/html/wp-content/themes/learnmate-child
+
