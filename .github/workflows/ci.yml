@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     services:
@@ -37,9 +37,34 @@ jobs:
       - name: Wait for WordPress to be ready
         run: sleep 60
 
-      - name: Check containers
+      - name: List Docker containers
         run: docker ps -a
 
-      - name: Tear down
+      # PHP Syntax Check
+      - name: PHP Lint (Syntax Check)
+        run: |
+          find wp-content/themes/learnmate-child -name "*.php" -exec php -l {} \;
+
+      # Install and Run WordPress Coding Standards
+      - name: Install PHPCS and WordPress Coding Standards
+        run: |
+          composer global require "squizlabs/php_codesniffer=*"
+          composer global require wp-coding-standards/wpcs
+          phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs
+
+      - name: Run PHPCS on Child Theme
+        run: |
+          ~/.composer/vendor/bin/phpcs --standard=WordPress wp-content/themes/learnmate-child
+
+      # Optional: Theme Check plugin using WP-CLI
+      - name: Install WP-CLI and Theme Check
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
+          wp plugin install theme-check --activate --allow-root --path=/var/www/html
+          wp theme check learnmate-child --path=/var/www/html --allow-root || true
+
+      - name: Tear down environment
         if: always()
         run: docker-compose -f docker-compose.yml down

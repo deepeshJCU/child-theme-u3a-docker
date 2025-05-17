@@ -1,0 +1,26 @@
+name: Deploy Child Theme to Flywp
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'wp-content/themes/learnmate-child/**'
+
+jobs:
+  deploy:
+    name: Deploy via SFTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy child theme to Flywp via SFTP
+        uses: pressidium/lftp-action@v1.0.0
+        with:
+          host: ${{ secrets.FLYWP_SFTP_HOST }}
+          port: ${{ secrets.FLYWP_SFTP_PORT }}
+          user: ${{ secrets.FLYWP_SFTP_USER }}
+          pass: ${{ secrets.FLYWP_SFTP_PASS }}
+          localDir: wp-content/themes/learnmate-child
+          remoteDir: /var/www/html/wp-content/themes/learnmate-child
