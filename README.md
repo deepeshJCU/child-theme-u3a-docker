@@ -1,154 +1,145 @@
+````markdown
+# U3A Child Theme – CP3402 Supplementary Assignment
 
-```` 
-# CP3402 WordPress u3a Child Theme (Docker WordPress Setup) Development
-
-This project contains a WordPress development environment using Docker Compose with a custom child theme built on the Astra theme. as part of the CP3402 assignment. Docker is used for local development, and GitHub Actions handles deployment.
-
----
-
-## Prerequisites
-
-Docker Desktop
-
-GitHub account
-
-Git (CLI or GUI)
+## Overview
+This project is a custom WordPress child theme developed for the U3A Townsville organisation. It was built to modernise their online presence, improve usability for senior users, and streamline communication and information access. The site was developed locally using Docker and deployed to AWS using GitHub Actions for CI/CD automation.
 
 ---
 
-## 🚀 Features
+## 🌱 Theme Development
 
-- WordPress 6.x running locally with Docker
-- MySQL database
-- Astra child theme (`u3a-child`) for customization
-- 🌙 Dark mode toggle with icon (🌙 / ☀️)
-- Easy local development environment
-- GitHub-ready for version control and CI/CD
+### Parent Theme
+- **Name:** Twenty Twenty-Four
+- **Source:** [WordPress.org](https://wordpress.org/themes/twentytwentyfour/)
+- The child theme inherits layout, accessibility, and core functionality from this parent theme.
+
+### Modifications
+| Area                | Change Made |
+|---------------------|-------------|
+| `style.css`         | Updated branding colors, improved font size/readability for senior users |
+| `functions.php`     | Enqueued parent theme styles, added custom scripts for interactivity |
+| `header.php`        | Custom navigation with larger buttons and U3A branding |
+| `footer.php`        | Added social media links, simplified layout |
+| `home.php`          | Custom home page template with welcome message, calls to action, and images |
+| `page-about.php`    | About U3A section with mission, vision, and image |
+| Custom CSS          | Enhanced visual clarity, accessibility, and responsiveness |
+
+### Pages Implemented
+- Home
+- About Us
+- Activities & Classes
+- Timetable
+- Contact
+- News/Noticeboard
 
 ---
 
-## 🛠️ Getting Started
+## 🐳 Local Development Environment
 
-### 1. Clone this Repository
+### Docker Setup
+Docker Compose was used to run a local WordPress and MySQL stack:
 
 ```bash
-git clone https://github.com/deepeshJCU/u3a-child-docker.git
-cd u3a
+docker-compose up
 ````
 
-### 2. Start the Docker Containers
+Accessible at: `http://localhost:8000`
 
-```bash
-docker-compose up -d
-```
+**Files included:**
 
-### 3. Access WordPress
-
-Open your browser and go to:
-
-```
-http://localhost:8000
-```
-
-Follow the setup wizard to complete the WordPress installation.
+* `docker-compose.yml`: configures WordPress and MySQL services
+* `wp-content/themes/u3a-child-theme/`: contains all custom theme files
 
 ---
 
-## 📁 File Structure
+## 🚀 Deployment
 
-```
-u3a/
-│
-├── docker-compose.yml
-├── wp-content/
-│   └── themes/
-│       └── u3a-child/
-│           ├── style.css
-│           ├── functions.php
-│           ├── js/
-│           │   └── dark-mode-toggle.js
-│           ├── screenshot.png
-│           └── header.php (optional override for toggle)
-├── README.md
-└── .gitignore
-```
+### Hosting Platform
 
----
+* **Amazon Web Services (AWS)** – Lightsail instance running Ubuntu + WordPress
 
-## 🌙 Dark Mode Toggle
+### Deployment Method
 
-### 🔧 How It Works
+Deployment is automated using **GitHub Actions**:
 
-* A toggle button is injected in the header with icon-based display.
-* The toggle uses `localStorage` to remember user preference.
-* Applies a `.dark-mode` class to `<body>`.
-* Theme responds via custom styles in `style.css`.
+* On push to `main` branch, the child theme is transferred to the AWS server via SSH/SFTP
+* Action used: `appleboy/scp-action@v0.1.3`
 
-### 🖼️ Icons
+#### GitHub Actions Workflow:
 
-* 🌙 Moon for dark mode
-* ☀️ Sun for light mode
+```yaml
+name: Deploy to AWS
 
----
+on:
+  push:
+    paths:
+      - 'child-theme/**'
+    branches:
+      - main
 
-## 🧠 Notes
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-* The **Astra** parent theme must be installed via the WordPress dashboard before activating the child theme.
-* Customize the `functions.php` and `style.css` to add more features.
-* This setup is for **local development only** and is not production-ready out-of-the-box.
-
----
-
-## 🏷️ Labels
-
-| Label         | Description                             |
-| ------------- | --------------------------------------- |
-| `enhancement` | Feature additions like dark mode toggle |
-| `bug`         | Bugs and issues                         |
-| `docs`        | Documentation updates                   |
-| `theme`       | Theme styling and layout                |
-| `docker`      | Docker configuration and setup          |
-
----
-
-## Deployment
-
-Deployment is automated using GitHub Actions. On push to the main branch, the workflow builds and deploys your theme.
-
----
-
-## 🔒 License
-
-This project is open source and available under the licensed for educational use under CP3402 guidelines.
-
----
-
-## 📄 .gitignore
-
-```
-# Docker
-*.log
-docker-compose.override.yml
-
-# WordPress
-wp-config.php
-wp-content/uploads/
-wp-content/upgrade/
-wp-content/cache/
-
-# OS/System
-.DS_Store
-Thumbs.db
-
-# Node / Composer / Others
-node_modules/
-vendor/
-
-# PHPStorm or VSCode settings
-.idea/
-.vscode/
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_KEY }}
+          source: "child-theme"
+          target: "/var/www/html/wp-content/themes"
 ```
 
+### Deployment Instructions (for new devs)
+
+1. Clone the repo
+2. Install Docker
+3. Run `docker-compose up`
+4. Make and test theme changes locally
+5. Push to the `main` branch
+6. GitHub Actions will auto-deploy to AWS
+7. View live site on production URL
+
+---
+
+## 🔒 Security & Version Control
+
+* Git used for all development
+* Commits follow best-practice messages
+* `.gitignore` excludes uploads, plugins, core WordPress
+* Deployment secrets stored in GitHub Actions secrets (SSH key, host, user)
+
+---
+
+## 🧪 Testing
+
+* Tested locally using multiple screen sizes and accessibility tools
+* Verified deployment reflects latest theme changes
+* Responsive and cross-browser compatible
+
+---
+
+## 👨‍💼 Author & Marker Info
+
+* **Author:** Deepesh Bijarnia
+* **Marker GitHub Username:** 
+* **Live Site URL:** 
+* **GitHub Repo:** [https://github.com/deepeshJCU/child-theme-u3a-docker.git](https://github.com/deepeshJCU/child-theme-u3a-docker.git)
+
+---
+
+## 📄 License & Acknowledgements
+
+* Theme based on Twenty Twenty-Four (GPL v2)
+* Docker images by WordPress and MySQL (official)
+* Deployment via [appleboy/scp-action](https://github.com/appleboy/scp-action)
+
 ```
+
+---
 
 
