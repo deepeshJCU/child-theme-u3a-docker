@@ -1,8 +1,18 @@
 
 ```` 
-# LearnMate Child Theme (Docker WordPress Setup)
+# CP3402 WordPress u3a Child Theme (Docker WordPress Setup) Development
 
-This project contains a WordPress development environment using Docker Compose with a custom child theme built on the Astra theme.
+This project contains a WordPress development environment using Docker Compose with a custom child theme built on the Astra theme. as part of the CP3402 assignment. Docker is used for local development, and GitHub Actions handles deployment.
+
+---
+
+## Prerequisites
+
+Docker Desktop
+
+GitHub account
+
+Git (CLI or GUI)
 
 ---
 
@@ -10,7 +20,7 @@ This project contains a WordPress development environment using Docker Compose w
 
 - WordPress 6.x running locally with Docker
 - MySQL database
-- Astra child theme (`learnmate-child`) for customization
+- Astra child theme (`u3a-child`) for customization
 - 🌙 Dark mode toggle with icon (🌙 / ☀️)
 - Easy local development environment
 - GitHub-ready for version control and CI/CD
@@ -22,8 +32,8 @@ This project contains a WordPress development environment using Docker Compose w
 ### 1. Clone this Repository
 
 ```bash
-git clone https://github.com/deepeshJCU/learnmate-child-docker.git
-cd learnmate
+git clone https://github.com/deepeshJCU/u3a-child-docker.git
+cd u3a
 ````
 
 ### 2. Start the Docker Containers
@@ -47,12 +57,12 @@ Follow the setup wizard to complete the WordPress installation.
 ## 📁 File Structure
 
 ```
-learnmate/
+u3a/
 │
 ├── docker-compose.yml
 ├── wp-content/
 │   └── themes/
-│       └── learnmate-child/
+│       └── u3a-child/
 │           ├── style.css
 │           ├── functions.php
 │           ├── js/
@@ -101,9 +111,15 @@ learnmate/
 
 ---
 
+## Deployment
+
+Deployment is automated using GitHub Actions. On push to the main branch, the workflow builds and deploys your theme.
+
+---
+
 ## 🔒 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the licensed for educational use under CP3402 guidelines.
 
 ---
 

@@ -1,4 +1,4 @@
-name: LearnMate WordPress CI
+name: u3a WordPress CI
 
 on:
   push:
@@ -43,7 +43,7 @@ jobs:
       # PHP Syntax Check
       - name: PHP Lint (Syntax Check)
         run: |
-          find wp-content/themes/learnmate-child -name "*.php" -exec php -l {} \;
+          find wp-content/themes/u3a-child -name "*.php" -exec php -l {} \;
 
       # Install and Run WordPress Coding Standards
       - name: Install PHPCS and WordPress Coding Standards
@@ -54,7 +54,7 @@ jobs:
 
       - name: Run PHPCS on Child Theme
         run: |
-          ~/.composer/vendor/bin/phpcs --standard=WordPress wp-content/themes/learnmate-child
+          ~/.composer/vendor/bin/phpcs --standard=WordPress wp-content/themes/u3a-child
 
       # Optional: Theme Check plugin using WP-CLI
       - name: Install WP-CLI and Theme Check
@@ -63,7 +63,7 @@ jobs:
           chmod +x wp-cli.phar
           sudo mv wp-cli.phar /usr/local/bin/wp
           wp plugin install theme-check --activate --allow-root --path=/var/www/html
-          wp theme check learnmate-child --path=/var/www/html --allow-root || true
+          wp theme check u3a-child --path=/var/www/html --allow-root || true
 
       - name: Tear down environment
         if: always()
