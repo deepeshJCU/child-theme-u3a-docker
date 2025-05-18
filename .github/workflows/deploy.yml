@@ -9,18 +9,37 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to AWS Lightsail
+    name: Deploy and Activate on Lightsail
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy via SCP to Lightsail
+      - name: Upload Child Theme to Lightsail
         uses: appleboy/scp-action@v0.1.3
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_KEY }}
-          source: "wp-content/themes/u3a-child-theme/*"
-          target: "/opt/bitnami/wordpress/wp-content/themes/u3a-child-theme"
+          source: "wp-content/themes/u3a-child-theme"
+          target: "/opt/bitnami/wordpress/wp-content/themes/wp-content/themes"
+
+      - name: Upload Activation Script
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_KEY }}
+          source: "deploy-and-activate-child-theme.sh"
+          target: "/home/bitnami"
+
+      - name: Run Activation Script via SSH
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_KEY }}
+          script: |
+            chmod +x ~/deploy-and-activate-child-theme.sh
+            sudo ~/deploy-and-activate-child-theme.sh
