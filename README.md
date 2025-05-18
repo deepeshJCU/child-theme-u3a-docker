@@ -1,5 +1,7 @@
 ## U3A Child Theme – CP3402 Supplementary Assignment
 
+[![Deploy Child Theme to Lightsail](https://github.com/deepeshJCU/child-theme-u3a-docker/actions/workflows/deploy.yml/badge.svg)](https://github.com/deepeshJCU/child-theme-u3a-docker/actions/workflows/deploy.yml)
+
 ## Overview
 This project is a custom WordPress child theme developed for the U3A Townsville organisation. It was built to modernise their online presence, improve usability for senior users, and streamline communication and information access. The site was developed locally using Docker and deployed to AWS using GitHub Actions for CI/CD automation.
 
