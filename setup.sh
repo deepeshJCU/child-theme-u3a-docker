@@ -8,7 +8,7 @@ wp core install --url="http://localhost:8000" \
     --title="U3A Site" \
     --admin_user="admin" \
     --admin_password="admin" \
-    --admin_email="admin@example.com" \
+    --admin_email="deepeshbijarnia2911@gmail.com" \
     --skip-email \
     --allow-root
 

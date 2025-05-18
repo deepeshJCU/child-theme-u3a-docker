@@ -1,26 +1,26 @@
-name: Deploy U3A Child Theme to AWS
+name: Deploy Child Theme to Lightsail
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'child-theme/**'
+      - 'wp-content/themes/u3a-child-theme/**'
 
 jobs:
   deploy:
-    name: Copy Theme to AWS Server
+    name: Deploy to AWS Lightsail
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy child theme via SCP
+      - name: Deploy via SCP to Lightsail
         uses: appleboy/scp-action@v0.1.3
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_KEY }}
-          source: "child-theme"
-          target: "/var/www/html/wp-content/themes"
+          source: "wp-content/themes/u3a-child-theme"
+          target: "/opt/bitnami/wordpress/wp-content/themes"
