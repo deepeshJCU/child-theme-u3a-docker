@@ -3,8 +3,18 @@
 [![Deploy Child Theme to Lightsail](https://github.com/deepeshJCU/child-theme-u3a-docker/actions/workflows/deploy.yml/badge.svg)](https://github.com/deepeshJCU/child-theme-u3a-docker/actions/workflows/deploy.yml)
 
 ## Overview
+This repository contains a custom WordPress child theme for U3A Townsville, developed as part of the CP3402 Supplementary Assignment. The project is containerized using Docker and automatically deployed to AWS Lightsail using GitHub Actions.
+
 This project is a custom WordPress child theme developed for the U3A Townsville organisation. It was built to modernise their online presence, improve usability for senior users, and streamline communication and information access. The site was developed locally using Docker and deployed to AWS using GitHub Actions for CI/CD automation.
 
+## 📦 Features
+
+- Custom child theme based on Twenty Twenty-Four
+- Dockerized local development with WordPress + MariaDB + phpMyAdmin
+- GitHub Actions CI/CD deployment to AWS Lightsail
+- Secure and production-ready workflow
+
+---
 
 
 ## 🌱 Theme Development
@@ -35,109 +45,121 @@ This project is a custom WordPress child theme developed for the U3A Townsville 
 
 ---
 
-## 🐳 Local Development Environment
+## 🐳 Local Development Setup (Docker)
 
-### Docker Setup
-Docker Compose was used to run a local WordPress and MySQL stack:
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/deepeshJCU/child-theme-u3a-docker.git
+cd child-theme-u3a-docker
+````
+
+### 2. Start Docker Containers
 
 ```bash
 docker-compose up
-````
-
-Accessible at: `http://localhost:8000`
-
-**Files included:**
-
-* `docker-compose.yml`: configures WordPress and MySQL services
-* `wp-content/themes/u3a-child-theme/`: contains all custom theme files
-
----
-
-## 🚀 Deployment
-
-### Hosting Platform
-
-* **Amazon Web Services (AWS)** – Lightsail instance running Ubuntu + WordPress
-
-### Deployment Method
-
-Deployment is automated using **GitHub Actions**:
-
-* On push to `main` branch, the child theme is transferred to the AWS server via SSH/SFTP
-* Action used: `appleboy/scp-action@v0.1.3`
-
-#### GitHub Actions Workflow:
-
-```yaml
-name: Deploy to AWS
-
-on:
-  push:
-    paths:
-      - 'child-theme/**'
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Deploy via SCP
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USER }}
-          key: ${{ secrets.AWS_KEY }}
-          source: "child-theme"
-          target: "/var/www/html/wp-content/themes"
 ```
 
-### Deployment Instructions (for new devs)
+This launches:
 
-1. Clone the repo
-2. Install Docker
-3. Run `docker-compose up`
-4. Make and test theme changes locally
-5. Push to the `main` branch
-6. GitHub Actions will auto-deploy to AWS
-7. View live site on production URL
+* WordPress at: [http://localhost:8000](http://localhost:8000)
+* phpMyAdmin at: [http://localhost:8080](http://localhost:8080)
 
----
+### 3. WordPress Admin Access (Local)
 
-## 🔒 Security & Version Control
-
-* Git used for all development
-* Commits follow best-practice messages
-* `.gitignore` excludes uploads, plugins, core WordPress
-* Deployment secrets stored in GitHub Actions secrets (SSH key, host, user)
+* **URL:** `http://localhost:8000/wp-admin`
+* **Username:** `admin`
+* **Password:** `admin` *(or check your `setup.sh` if overridden)*
 
 ---
 
-## 🧪 Testing
+## 🌐 Deployment Setup (AWS + GitHub Actions)
 
-* Tested locally using multiple screen sizes and accessibility tools
-* Verified deployment reflects latest theme changes
-* Responsive and cross-browser compatible
+### Hosting:
+
+* Deployed to **AWS Lightsail** instance with static IP: `13.239.242.11`
+
+### GitHub Actions Workflow:
+
+* Automatically deploys on `main` branch push to:
+
+  ```
+  wp-content/themes/u3a-child-theme/
+  ```
+
+### Secrets (Configured in GitHub):
+
+| Secret Name | Purpose                            |
+| ----------- | ---------------------------------- |
+| `AWS_HOST`  | Static IP of Lightsail server      |
+| `AWS_USER`  | SSH username (`bitnami`)           |
+| `AWS_KEY`   | Contents of `.pem` SSH private key |
+
+### CI/CD Flow:
+
+* Push changes to `main`
+* GitHub Action runs SCP via `appleboy/scp-action`
+* Theme is uploaded to:
+  `/opt/bitnami/wordpress/wp-content/themes/`
 
 ---
 
-## 👨‍💼 Author & Marker Info
+## 📁 Project Structure
 
-* **Author:** Deepesh Bijarnia
-* **Marker GitHub Username:** 
-* **Live Site URL:** 
-* **GitHub Repo:** [https://github.com/deepeshJCU/child-theme-u3a-docker.git](https://github.com/deepeshJCU/child-theme-u3a-docker.git)
+```
+.
+├── Dockerfile
+├── docker-compose.yml
+├── setup.sh
+├── README.md
+├── REPORT.md
+├── wp-content/
+│   └── themes/
+│       └── u3a-child-theme/
+│           ├── style.css
+│           ├── functions.php
+│           └── front-page.php
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+```
 
 ---
 
-## 📄 License & Acknowledgements
+## 🧩 Child Theme Highlights
 
-* Theme based on Twenty Twenty-Four (GPL v2)
-* Docker images by WordPress and MySQL (official)
-* Deployment via [appleboy/scp-action](https://github.com/appleboy/scp-action)
+* Based on: `twentytwentyfour`
+* Custom style changes in `style.css`
+* Parent styles enqueued using `functions.php`
+* Custom home page (`front-page.php`)
+* Clean, readable design for older audiences
+
+---
+
+## 🚀 Live Demo
+
+* 🌐 [http://13.239.242.11](http://13.239.242.11)
+* 🔐 Admin: [http://13.239.242.11/wp-admin](http://13.239.242.11/wp-admin)
+
+> Use credentials provided in `supplementary.html` or Lightsail application password
+
+---
+
+## 👨‍💻 Author
+
+**Deepesh Bijarnia**
+GitHub: [@deepeshJCU](https://github.com/deepeshJCU)
+
+---
+
+## 📄 License
+
+This theme is licensed under the [GPL v2 or later](http://www.gnu.org/licenses/gpl-2.0.html).
+Based on the official [Twenty Twenty-Four theme](https://wordpress.org/themes/twentytwentyfour/).
+
+---
+
+**CP3402 Supplementary Assignment – James Cook University**
 
 ```
 
