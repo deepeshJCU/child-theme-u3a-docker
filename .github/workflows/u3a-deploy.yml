@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'wp-content/themes/u3a-child/**'
+      - 'wp-content/themes/child-theme/**'
 
 jobs:
   deploy:
@@ -22,5 +22,5 @@ jobs:
           port: ${{ secrets.FLYWP_SFTP_PORT }}
           user: ${{ secrets.FLYWP_SFTP_USER }}
           pass: ${{ secrets.FLYWP_SFTP_PASS }}
-          localDir: wp-content/themes/u3a-child
-          remoteDir: /var/www/html/wp-content/themes/u3a-child
+          localDir: wp-content/themes/child-theme
+          remoteDir: /var/www/html/wp-content/themes/child-theme

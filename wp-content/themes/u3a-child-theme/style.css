@@ -1,0 +1,34 @@
+/*
+Theme Name: LearnMate Child
+Theme URI: http://localhost:8000/
+ Description:  A child theme for LearnMate using the Astra parent theme.
+Author: Deepesh Bijarnia
+Author URI: https://learnmate-egggbj.flywp.xyz/
+Template: astra
+Version: 1.0.0
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  learnmate-child
+*/
+
+/*
+ Theme Name:     U3A Child Theme
+ Theme URI:      https://github.com/deepeshJCU/child-theme-u3a-docker.git
+ Description:    A custom child theme for U3A Townsville based on Twenty Twenty-Four
+ Author:         Deepesh Bijarnia
+ Author URI:     https://yourportfolio.com
+ Template:       twentytwentyfour
+ Version:        1.0.0
+ License:        GNU General Public License v2 or later
+ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:    u3a-child
+*/
+
+@import url("../twentytwentyfour/style.css");
+
+/* Custom styles below */
+body {
+    font-size: 18px;
+    line-height: 1.8;
+    background-color: #f9f9f9;
+}
