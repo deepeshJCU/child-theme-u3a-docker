@@ -2,23 +2,25 @@ version: '3.8'
 
 services:
   wordpress:
-    image: wordpress:6.5-php8.2-apache
-    container_name: learnmate_wordpress
+    build: .                                # Builds using your local Dockerfile
+    container_name: u3a_wordpress
     ports:
-      - "8000:80"
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      - "8000:80"                           # Access WordPress at localhost:8000
     volumes:
       - ./wp-content:/var/www/html/wp-content
+      - ./setup.sh:/setup.sh               # Your custom setup script
+    entrypoint: ["bash", "/setup.sh"]      # Override default command to run setup
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     depends_on:
       - db
 
   db:
     image: mariadb:10.6
-    container_name: learnmate_db
+    container_name: u3a_db
     restart: always
     environment:
       MYSQL_DATABASE: wordpress
@@ -30,9 +32,9 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: learnmate_phpmyadmin
+    container_name: u3a_phpmyadmin
     ports:
-      - "8080:80"
+      - "8080:80"                           # Access phpMyAdmin at localhost:8080
     environment:
       PMA_HOST: db
       PMA_USER: root
