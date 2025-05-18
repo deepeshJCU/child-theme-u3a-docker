@@ -1,0 +1,26 @@
+name: Deploy U3A Child Theme to AWS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'child-theme/**'
+
+jobs:
+  deploy:
+    name: Copy Theme to AWS Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy child theme via SCP
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key: ${{ secrets.AWS_KEY }}
+          source: "child-theme"
+          target: "/var/www/html/wp-content/themes"

@@ -1,21 +1,61 @@
-# Docker
-*.log
-docker-compose.override.yml
+# Ignore WordPress core files
+wordpress/
+wp-admin/
+wp-includes/
+*.sql
+*.zip
 
-# WordPress
-wp-config.php
+# Ignore plugins and uploads
+wp-content/plugins/
 wp-content/uploads/
-wp-content/upgrade/
-wp-content/cache/
 
-# OS/System
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore Docker system files
+*.pid
+*.log
+
+# Ignore OS system files
 .DS_Store
 Thumbs.db
 
-# Node / Composer / Others
-node_modules/
-vendor/
-
-# PHPStorm or VSCode settings
-.idea/
+# Ignore IDE/editor files
 .vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore node_modules if used
+node_modules/
+
+# Ignore composer/vendor if used
+vendor/
+composer.lock
+
+# Ignore backups and exports
+*.bak
+*.tmp
+*.tar.gz
+*.gz
+*.rar
+
+# Ignore GitHub-related unnecessary files
+*.pem
+*.key
+*.crt
+
+# Ignore deployment artifacts
+*.tgz
+*.tar
+*.zip
+
+# Do not ignore these important folders
+!wp-content/themes/child-theme/
+!docker-compose.yml
+!.github/
+!.gitignore
+!README.md
+!REPORT.md
