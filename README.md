@@ -1,10 +1,9 @@
-````markdown
-# U3A Child Theme – CP3402 Supplementary Assignment
+## U3A Child Theme – CP3402 Supplementary Assignment
 
 ## Overview
 This project is a custom WordPress child theme developed for the U3A Townsville organisation. It was built to modernise their online presence, improve usability for senior users, and streamline communication and information access. The site was developed locally using Docker and deployed to AWS using GitHub Actions for CI/CD automation.
 
----
+
 
 ## 🌱 Theme Development
 
