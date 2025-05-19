@@ -1,32 +1,26 @@
 #!/bin/bash
 
-# Path to WP installation
-WP_PATH="/opt/bitnami/wordpress"
-
-# Go to WordPress directory
-cd $WP_PATH || {
-  echo "❌ Failed to navigate to $WP_PATH"
-  exit 1
+# Go to WordPress directory just in case
+cd /opt/bitnami/wordpress || {
+    echo "❌ Could not navigate to WordPress directory. Exiting."
+    exit 1
 }
 
-# Ensure WP-CLI is available
-if ! command -v wp &> /dev/null; then
-    echo "❌ WP-CLI not found. Exiting."
-    exit 1
-fi
+# Display current themes
+echo "📂 Available themes before activation:"
+wp theme list --allow-root
 
-# List themes (optional for debugging)
-echo "📂 Available themes:"
-wp theme list
+# Activate the child theme
+echo "🚀 Activating child theme: u3a-child-theme"
+wp theme activate u3a-child-theme --allow-root
 
-# Try activating the theme
-echo "🚀 Activating u3a-child-theme..."
-wp theme activate u3a-child-theme
+# Check if the theme is now active
+ACTIVE_THEME=$(wp theme list --status=active --field=name --allow-root)
 
-# Check activation result
-if [ $? -eq 0 ]; then
-    echo "✅ u3a-child-theme activated successfully!"
+if [ "$ACTIVE_THEME" == "u3a-child-theme" ]; then
+  echo "✅ Successfully activated 'u3a-child-theme'."
 else
-    echo "❌ Failed to activate u3a-child-theme."
-    exit 1
+  echo "❌ Failed to activate 'u3a-child-theme'. Please check if the theme exists at the correct path."
+  wp theme list --allow-root
+  exit 1
 fi

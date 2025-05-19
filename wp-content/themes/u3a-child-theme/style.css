@@ -16,8 +16,8 @@
 body {
     font-size: 1.25rem;
     line-height: 1.8;
-    background-color: #030303;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 /* Version 1.0.1 - GitHub Actions test deploy */
