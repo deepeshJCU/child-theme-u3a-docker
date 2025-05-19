@@ -23,8 +23,8 @@ jobs:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USER }}
           key: ${{ secrets.AWS_KEY }}
-          source: "wp-content/themes/u3a-child-theme"
-          target: "/opt/bitnami/wordpress/wp-content/themes"
+          source: "u3a-child-theme"
+          target: "/opt/bitnami/wordpress/wp-content/themes/u3a-child-theme"
 
       - name: 📤 Upload Activation Script
         uses: appleboy/scp-action@v0.1.3
