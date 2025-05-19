@@ -20,5 +20,46 @@ body {
     color: #ffffff;
 }
 
+.u3a-homepage .container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.hero {
+  background: #e0f7fa;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.button {
+  background: #00796b;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  display: inline-block;
+  margin: 1rem 0.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button.secondary {
+  background: #b2dfdb;
+  color: #004d40;
+}
+
+.activity-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.activity-card {
+  flex: 1 1 30%;
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+
 /* Version 1.0.1 - GitHub Actions test deploy */
 
