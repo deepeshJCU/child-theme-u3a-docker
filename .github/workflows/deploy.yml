@@ -43,4 +43,4 @@ jobs:
           key: ${{ secrets.AWS_KEY }}
           script: |
             chmod +x ~/deploy-and-activate-child-theme.sh
-            sudo ~/deploy-and-activate-child-theme.sh
+            ~/deploy-and-activate-child-theme.sh
