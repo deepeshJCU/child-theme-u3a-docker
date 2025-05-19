@@ -3,7 +3,7 @@
  Theme URI:      https://github.com/deepeshJCU/child-theme-u3a-docker.git
  Description:    A custom child theme for U3A Townsville based on Twenty Twenty-Four
  Author:         Deepesh Bijarnia
- Author URI:     https://yourportfolio.com
+ Author URI:     https://github.com/deepeshJCU/child-theme-u3a-docker.git
  Template:       twentytwentyfour
  Version:        1.0.0
  License:        GNU General Public License v2 or later
@@ -16,7 +16,8 @@
 body {
     font-size: 18px;
     line-height: 1.8;
-    background-color: #f9f9f9;
+    background-color: #030303;
+    color: #ffffff;
 }
 
 /* Version 1.0.1 - GitHub Actions test deploy */
