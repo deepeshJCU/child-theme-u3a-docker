@@ -13,11 +13,39 @@
 
 
 /* Custom styles below for the child theme */
+.site-header,
+.site-footer {
+  background-color: #004d40;
+  color: #ffffff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.site-title a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.main-menu,
+.footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main-menu li a,
+.footer-menu li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 body {
     font-size: 1.25rem;
     line-height: 1.8;
-    background-color: #000000;
-    color: #ffffff;
 }
 
 .u3a-homepage .container {
