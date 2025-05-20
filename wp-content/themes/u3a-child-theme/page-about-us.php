@@ -27,7 +27,7 @@ get_header(); ?>
   </section>
 
   <section class="about-section">
-    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/commitee.jpg" alt="Committee" class="about-image">
+    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/committe.jpg" alt="Committee" class="about-image">
     <div>
       <h2>Meet the Committee</h2>
       <p>Our dedicated volunteers ensure the smooth operation of U3A Townsville and support our growing list of educational programs.</p>
