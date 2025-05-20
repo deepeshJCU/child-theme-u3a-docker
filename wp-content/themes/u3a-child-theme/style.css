@@ -88,6 +88,57 @@ body {
   border-radius: 8px;
 }
 
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+main h1, main h2 {
+  color: #00796b;
+}
+
+main ul {
+  padding-left: 1.5rem;
+}
+
+.activity-categories ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.about-section {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 350px; /* scales well on desktops */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.about-section div {
+  flex: 1 1 60%;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image {
+    width: 100%;
+  }
+}
+
 
 /* Version 1.0.1 - GitHub Actions test deploy */
 
