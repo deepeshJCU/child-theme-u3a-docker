@@ -4,7 +4,7 @@ get_header(); ?>
 
 <main class="u3a-activities container">
   <h1>Weekly Activities</h1>
-  <p>Explore our broad range of weekly programs—from arts and fitness to academic talks and social events.</p>
+  <p>Explore our broad range of weekly programs from arts and fitness to academic talks and social events.</p>
 
   <section class="activity-categories">
     <h2>Categories</h2>
@@ -77,7 +77,7 @@ get_header(); ?>
   </section>
 
   <section>
-    <h2>Sample Program Format</h2>
+    <h2>Programs</h2>
     <ul>
       <li><strong>Creative Writing</strong> – Weekly, Room 4, Fridays 10–12pm</li>
       <li><strong>Tai Chi</strong> – Aitkenvale Hall, Mondays 8–9am</li>
