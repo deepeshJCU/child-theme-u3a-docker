@@ -1,10 +1,11 @@
-<?php get_header(); ?>
+<?php get_header(); ?> 
 
 <main class="u3a-homepage">
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
+      <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-banner.jpg" alt="Seniors learning together" class="hero-image">
       <h1>Welcome to U3A Townsville</h1>
       <p>Connecting seniors with lifelong learning and community.</p>
       <a href="/about-us" class="button">Learn More</a>
@@ -13,9 +14,12 @@
 
   <!-- Mission Statement -->
   <section class="mission">
-    <div class="container">
-      <h2>Our Mission</h2>
-      <p>To support and encourage our members in pursuing personal growth, community engagement, and well-being through accessible learning and social activities.</p>
+    <div class="container mission-content">
+      <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/mission.jpg" alt="Mission in action" class="mission-image">
+      <div>
+        <h2>Our Mission</h2>
+        <p>To support and encourage our members in pursuing personal growth, community engagement, and well-being through accessible learning and social activities.</p>
+      </div>
     </div>
   </section>
 
@@ -25,14 +29,17 @@
       <h2>What We Offer</h2>
       <div class="activity-grid">
         <div class="activity-card">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/creative.jpg" alt="Creative Arts" class="activity-image">
           <h3>Creative Arts</h3>
           <p>Painting, photography, crafts & more to awaken your inner artist.</p>
         </div>
         <div class="activity-card">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/talks.jpg" alt="Talks & Lectures" class="activity-image">
           <h3>Talks & Lectures</h3>
           <p>Weekly Friday talks and expert-led lectures at JCU and on Magnetic Island.</p>
         </div>
         <div class="activity-card">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/leisure.jpg" alt="Health & Leisure" class="activity-image">
           <h3>Health & Leisure</h3>
           <p>Walking groups, Tai Chi, and more to keep body and mind in motion.</p>
         </div>
