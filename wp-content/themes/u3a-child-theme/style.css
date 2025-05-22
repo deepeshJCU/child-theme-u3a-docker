@@ -314,6 +314,41 @@ main ul {
   margin-top: 2rem;
 }
 
+/* members join style */
+.member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.member-form label {
+  font-weight: bold;
+}
+
+.member-form input,
+.member-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.member-form button {
+  background-color: #00796b;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.member-form button:hover {
+  background-color: #004d40;
+}
 
 /* contact styles */
 .contact-form {

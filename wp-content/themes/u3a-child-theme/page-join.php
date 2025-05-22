@@ -22,9 +22,29 @@ get_header(); ?>
   </section>
 
   <section>
-    <h2>Membership Form</h2>
-    <?php echo do_shortcode('[wpforms id="124"]'); ?>
-  </section>
+  <h2>Membership Form</h2>
+  <form class="member-form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+    <input type="hidden" name="action" value="u3a_submit_member_form">
+
+    <label for="full_name">Full Name</label>
+    <input type="text" name="full_name" id="full_name" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" name="phone" id="phone">
+
+    <label for="address">Residential Address</label>
+    <textarea name="address" id="address" rows="3"></textarea>
+
+    <label for="interests">What activities are you interested in?</label>
+    <textarea name="interests" id="interests" rows="4"></textarea>
+
+    <button type="submit" class="button">Submit Membership Request</button>
+  </form>
+</section>
+
 </main>
 
 <?php get_footer(); ?>

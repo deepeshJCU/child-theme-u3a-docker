@@ -47,7 +47,37 @@ function u3a_handle_news_submission() {
   add_action('admin_post_u3a_submit_news', 'u3a_handle_news_submission');
   add_action('admin_post_nopriv_u3a_submit_news', 'u3a_handle_news_submission'); // Optional if allowing non-logged-in users
   
-
+// member join function
+function u3a_handle_member_form() {
+    if (!isset($_POST['full_name'], $_POST['email'])) {
+      wp_die('Required fields missing.');
+    }
+  
+    $full_name = sanitize_text_field($_POST['full_name']);
+    $email     = sanitize_email($_POST['email']);
+    $phone     = sanitize_text_field($_POST['phone']);
+    $address   = sanitize_textarea_field($_POST['address']);
+    $interests = sanitize_textarea_field($_POST['interests']);
+  
+    $admin_email = 'deepesh.bijarnia@my.jcu.edu.au';
+    $subject = 'New U3A Membership Request';
+    $headers = ['Content-Type: text/html; charset=UTF-8'];
+    $body = "
+      <strong>Full Name:</strong> $full_name<br>
+      <strong>Email:</strong> $email<br>
+      <strong>Phone:</strong> $phone<br>
+      <strong>Address:</strong> $address<br>
+      <strong>Interests:</strong> $interests
+    ";
+  
+    wp_mail($admin_email, $subject, $body, $headers);
+  
+    wp_redirect(home_url('/thank-you'));
+    exit;
+  }
+  add_action('admin_post_u3a_submit_member_form', 'u3a_handle_member_form');
+  add_action('admin_post_nopriv_u3a_submit_member_form', 'u3a_handle_member_form'); // if form is public
+  
 
 // contact funtions
 function u3a_handle_contact_form() {
