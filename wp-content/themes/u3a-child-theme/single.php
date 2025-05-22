@@ -21,7 +21,7 @@
       </div>
 
       <footer class="post-footer">
-        <p><a href="<?php echo home_url('/news-and-updates'); ?>" class="button secondary">← Back to News</a></p>
+        <p><a href="<?php echo home_url('/news'); ?>" class="button secondary">← Back to News</a></p>
       </footer>
     </article>
 
