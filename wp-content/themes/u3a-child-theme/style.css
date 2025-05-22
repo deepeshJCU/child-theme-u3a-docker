@@ -13,7 +13,63 @@
 
 
 /* Custom styles below for the child theme */
-.site-header,
+.site-header {
+  background: #004d40;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.branding {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.logo-link img {
+  height: 50px;
+  width: auto;
+}
+
+.site-title, .site-description {
+  margin: 0;
+  color: #fff;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.main-navigation {
+  display: flex;
+  gap: 1rem;
+}
+
+.main-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.main-navigation a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .site-footer {
   background-color: #004d40;
   color: #ffffff;
@@ -405,6 +461,24 @@ main ul {
 
 
 @media (max-width: 768px) {
+
+  .main-navigation {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #004d40;
+    padding-top: 1rem;
+  }
+
+  .main-navigation.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+/* mobile about */
   .about-section {
     flex-direction: column;
     text-align: center;

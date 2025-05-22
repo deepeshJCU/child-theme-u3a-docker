@@ -17,6 +17,8 @@ function u3a_register_menus() {
     ));
 }
 add_action('after_setup_theme', 'u3a_register_menus');
+add_theme_support('custom-logo');
+
 
 
 // Handing the Form Submission

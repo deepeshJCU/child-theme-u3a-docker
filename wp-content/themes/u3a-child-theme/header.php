@@ -9,23 +9,30 @@
 
 <body <?php body_class(); ?>>
 
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">
-        <a href="<?php echo esc_url(home_url('/')); ?>">
-          <?php bloginfo('name'); ?>
-        </a>
-      </h1>
+<header class="site-header">
+  <div class="container">
+    <div class="branding">
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-link">
+        <?php if (has_custom_logo()) {
+          the_custom_logo();
+        } else { ?>
+          <h1 class="site-title"><?php bloginfo('name'); ?></h1>
+        <?php } ?>
+      </a>
       <p class="site-description"><?php bloginfo('description'); ?></p>
-
-      <nav class="main-navigation">
-        <?php
-          wp_nav_menu(array(
-            'theme_location' => 'main-menu',
-            'menu_class'     => 'main-menu',
-            'container'      => false,
-          ));
-        ?>
-      </nav>
     </div>
-  </header>
+
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+
+    <nav class="main-navigation" id="site-navigation">
+      <?php
+        wp_nav_menu(array(
+          'theme_location' => 'main-menu',
+          'menu_class'     => 'main-menu',
+          'container'      => false,
+        ));
+      ?>
+    </nav>
+  </div>
+</header>
+

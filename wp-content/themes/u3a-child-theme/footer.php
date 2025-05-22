@@ -13,6 +13,18 @@
     </div>
   </footer>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('site-navigation');
+
+    toggle.addEventListener('click', function () {
+      nav.classList.toggle('active');
+    });
+  });
+</script>
+
+
   <?php wp_footer(); ?>
 </body>
 </html>
