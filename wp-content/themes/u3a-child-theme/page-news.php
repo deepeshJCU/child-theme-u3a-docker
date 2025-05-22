@@ -4,7 +4,17 @@ get_header(); ?>
 
 <main class="u3a-news container">
   <h1>News & Updates</h1>
-  <p>Stay informed with our latest newsletters, events, and updates.</p>
+  <p>Stay informed with our latest newsletters, events, and updates. </p>
+  <small>Go to:
+Dashboard → Posts → Add New
+
+For each news post:
+
+✅ Give it a title and content
+
+✅ Add a featured image (optional)
+
+✅ Assign it a category like News, Events, or Newsletter (optional but useful) </small>
 
   <?php
   $news_query = new WP_Query(array(
