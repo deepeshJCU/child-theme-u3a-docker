@@ -19,6 +19,36 @@ function u3a_register_menus() {
 add_action('after_setup_theme', 'u3a_register_menus');
 
 
+// Handing the Form Submission
+function u3a_handle_news_submission() {
+    if (!is_user_logged_in()) {
+      wp_die('Unauthorized');
+    }
+  
+    if (isset($_POST['post_title'], $_POST['post_content'])) {
+      $post_data = array(
+        'post_title'   => sanitize_text_field($_POST['post_title']),
+        'post_content' => sanitize_textarea_field($_POST['post_content']),
+        'post_status'  => 'publish', // or 'pending' if you want admin-approve
+        'post_author'  => get_current_user_id(),
+        'post_type'    => 'post',
+      );
+  
+      $post_id = wp_insert_post($post_data);
+  
+      if ($post_id) {
+        wp_redirect(home_url('/news-and-updates?submitted=true'));
+        exit;
+      } else {
+        wp_die('Post submission failed.');
+      }
+    }
+  }
+  add_action('admin_post_u3a_submit_news', 'u3a_handle_news_submission');
+  add_action('admin_post_nopriv_u3a_submit_news', 'u3a_handle_news_submission'); // Optional if allowing non-logged-in users
+  
+
+
 // contact funtions
 function u3a_handle_contact_form() {
     if (!isset($_POST['name'], $_POST['email'], $_POST['message'])) {

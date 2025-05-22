@@ -25,9 +25,18 @@ For each news post:
   if ($news_query->have_posts()):
     while ($news_query->have_posts()): $news_query->the_post(); ?>
       <article>
+        <?php if (has_post_thumbnail()): ?>
+            <div class="featured-image">
+                <?php the_post_thumbnail('medium'); ?>
+            </div>
+        <?php endif; ?>
+
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <p><em><?php the_date(); ?></em></p>
         <?php the_excerpt(); ?>
+        <?php the_excerpt(); ?>
+        <a href="<?php the_permalink(); ?>" class="button secondary">Read More</a>
+
       </article>
     <?php endwhile;
     wp_reset_postdata();
