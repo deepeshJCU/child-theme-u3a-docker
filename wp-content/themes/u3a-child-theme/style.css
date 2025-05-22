@@ -158,6 +158,39 @@ main ul {
   margin-bottom: 1rem;
 }
 
+.accordion-section {
+  margin-top: 2rem;
+}
+
+.accordion {
+  background-color: #00796b;
+  color: #fff;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.3s;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.accordion:hover {
+  background-color: #004d40;
+}
+
+.panel {
+  background-color: #f1f1f1;
+  color: #000;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 1rem;
+  border-radius: 4px;
+}
+
+
 .contact-form {
   display: flex;
   flex-direction: column;
