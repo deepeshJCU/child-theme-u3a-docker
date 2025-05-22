@@ -145,6 +145,17 @@ This launches:
 
 ---
 
+### 🔁 Marker Instructions
+
+This repository grants push access to the subject marker [@lindsaymarkward] (https://github.com/lindsaymarkward). To test the deployment pipeline:
+
+1. Clone the repo and make a small change to the child theme (e.g., `style.css`).
+2. Commit and push to the `main` branch.
+3. GitHub Actions will automatically deploy the updated theme to the production server at [http://13.239.242.11](http://13.239.242.11).
+4. The updated theme will be activated and visible immediately.
+
+and also on Trello as a member for assistance 
+
 ## 👨‍💻 Author
 
 **Deepesh Bijarnia**
