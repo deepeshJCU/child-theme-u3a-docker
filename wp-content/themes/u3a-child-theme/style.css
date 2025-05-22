@@ -48,10 +48,11 @@ body {
     line-height: 1.8;
 }
 
-.u3a-homepage .container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 2rem;
+.u3a-homepage .container,
+.u3a-activities.container {
+max-width: 1000px;
+margin: auto;
+padding: 2rem;
 }
 
 .hero {
@@ -157,6 +158,27 @@ main ul {
   margin-bottom: 1rem;
 }
 
+.contact-location {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.map-container {
+  flex: 1 1 400px;
+  min-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-location div {
+  flex: 1 1 300px;
+}
+
 
 @media (max-width: 768px) {
   .about-section {
@@ -171,4 +193,6 @@ main ul {
 
 
 /* Version 1.0.1 - GitHub Actions test deploy */
+
+
 
