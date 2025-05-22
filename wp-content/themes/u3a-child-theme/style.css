@@ -280,6 +280,40 @@ main ul {
   border-radius: 4px;
 }
 
+/* Single page styles */
+.u3a-single-post .news-post {
+  background: #fff;
+  color: #000;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.u3a-single-post h1 {
+  margin-bottom: 0.5rem;
+}
+
+.u3a-single-post .meta {
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.u3a-single-post .featured-image img {
+  width: 100%;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.u3a-single-post .post-content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.u3a-single-post .post-footer {
+  margin-top: 2rem;
+}
+
 
 /* contact styles */
 .contact-form {
