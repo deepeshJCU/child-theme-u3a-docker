@@ -22,7 +22,7 @@ get_header(); ?>
     <div>
       <h2>Office Location</h2>
       <p>Aitkenvale Community Centre, 25-27 Ross River Road, Townsville</p>
-      <p> <a href="mailto:info@u3atownsville.org.au">Email: info@u3atownsville.org.au</a> </p>
+      <p> <a href="mailto:deepesh.bijarnia@my.jcu.edu.au">Email: deepesh.bijarnia@my.jcu.edu.au</a> </p>
       <p> <a href="tel:+61418658918">Phone: +61 418 658 918</a> </p>
     </div>
   </section>

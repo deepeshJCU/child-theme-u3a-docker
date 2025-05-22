@@ -18,3 +18,28 @@ function u3a_register_menus() {
 }
 add_action('after_setup_theme', 'u3a_register_menus');
 
+
+// contact funtions
+function u3a_handle_contact_form() {
+    if (!isset($_POST['name'], $_POST['email'], $_POST['message'])) {
+        wp_die('Incomplete form submission.');
+    }
+
+    $name    = sanitize_text_field($_POST['name']);
+    $email   = sanitize_email($_POST['email']);
+    $message = sanitize_textarea_field($_POST['message']);
+
+    $to = 'deepesh.bijarnia@my.jcu.edu.au'; // preferred admin email
+    $subject = "New Contact from U3A Website";
+    $headers = ['Content-Type: text/html; charset=UTF-8', "Reply-To: $email"];
+
+    $body = "<strong>Name:</strong> $name<br><strong>Email:</strong> $email<br><strong>Message:</strong><br>$message";
+
+    wp_mail($to, $subject, $body, $headers);
+
+    wp_redirect(home_url('/thank-you'));
+    exit;
+}
+add_action('admin_post_nopriv_u3a_contact_form', 'u3a_handle_contact_form');
+add_action('admin_post_u3a_contact_form', 'u3a_handle_contact_form');
+
